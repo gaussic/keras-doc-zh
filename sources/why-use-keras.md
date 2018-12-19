@@ -18,7 +18,10 @@
 
 <img src='https://s3.amazonaws.com/keras.io/img/dl_frameworks_power_scores.png' style='width:500px; display: block; margin: 0 auto;'/>
 
-*Deep learning 框架排名，由 Jeff Hale 基于 7 个分类的 11 个数据源计算得出*
+<p style='font-style: italic; font-size: 10pt; text-align: center;'>
+    Deep learning 框架排名，由 Jeff Hale 基于 7 个分类的 11 个数据源计算得出
+</i>
+</p>
 
 截至 2018 年中期，Keras 拥有超过 250,000 名个人用户。与其他任何深度学习框架相比，Keras 在行业和研究领域的应用率更高（除 TensorFlow 之外，且 Keras API 是 TensorFlow 的官方前端，通过 `tf.keras` 模块使用）。
 
@@ -54,9 +57,9 @@ Keras也是深度学习研究人员的最爱，在上载到预印本服务器 [a
 
 如此一来，你的 Keras 模型可以在 CPU 之外的不同硬件平台上训练：
 
-- [NVIDIA GPU](https://developer.nvidia.com/deep-learning)。
-- [Google TPU](https://cloud.google.com/tpu/)，通过 TensorFlow 后端和 Google Cloud。
-- OpenCL 支持的 GPU, 比如 AMD, 通过 [PlaidML Keras 后端](https://github.com/plaidml/plaidml)。
+- [NVIDIA GPU](https://developer.nvidia.com/deep-learning)
+- [Google TPU](https://cloud.google.com/tpu/)，通过 TensorFlow 后端和 Google Cloud
+- OpenCL 支持的 GPU, 比如 AMD, 通过 [PlaidML Keras 后端](https://github.com/plaidml/plaidml)
 
 ---
 
