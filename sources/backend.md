@@ -44,7 +44,8 @@ KERAS_BACKEND=tensorflow python -c "from keras import backend"
 Using TensorFlow backend.
 ```
 
-In Keras it is possible to load more backends than `"tensorflow"`, `"theano"`, and `"cntk"`. Keras can use external backends as well, and this can be performed by changing the `keras.json` configuration file, and the `"backend"` setting. Suppose you have a Python module called `my_module` that you wanted to use as your external backend. The `keras.json` configuration file would be changed as follows:
+在 Keras 中，可以加载比 `"tensorflow"`, `"theano"` 和 `"cntk"` 更多的后端。
+Keras 也可以使用外部后端，这可以通过更改 `keras.json` 配置文件和 `"backend"` 设置来执行。 假设您有一个名为 `my_module` 的 Python 模块，您希望将其用作外部后端。`keras.json` 配置文件将更改如下：
 
 ```
 {
@@ -54,9 +55,10 @@ In Keras it is possible to load more backends than `"tensorflow"`, `"theano"`, a
     "backend": "my_package.my_module"
 }
 ```
-An external backend must be validated in order to be used, a valid backend must have the following functions: `placeholder`, `variable` and `function`.
 
-If an external backend is not valid due to missing a required entry, an error will be logged notifying which entry/entries are missing.
+必须验证外部后端才能使用，有效的后端必须具有以下函数：`placeholder`, `variable` and `function`.
+
+如果由于缺少必需的条目而导致外部后端无效，则会记录错误，通知缺少哪些条目。
 
 ----
 
