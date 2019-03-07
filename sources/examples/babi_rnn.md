@@ -125,7 +125,7 @@ def vectorize_stories(data, word_idx, story_maxlen, query_maxlen):
     for story, query, answer in data:
         x = [word_idx[w] for w in story]
         xq = [word_idx[w] for w in query]
-        # let's not forget that index 0 is reserved
+        # 不要忘记索引 0 已被保留
         y = np.zeros(len(word_idx) + 1)
         y[word_idx[answer]] = 1
         xs.append(x)
