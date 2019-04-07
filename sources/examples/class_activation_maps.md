@@ -10,13 +10,12 @@ import keras.applications.resnet50 as resnet
 from keras.layers import UpSampling2D, Conv2D
 
 
-# Please set an appropriate image file
+# 请设置一个合适的图像文件
 INPUT_IMG_FILE = "dog.jpg"
 
 ################################################################
-# The following parameters can be changed to other models
-# that use global average pooling.
-# e.g.) InceptionResnetV2 / NASNetLarge
+# 以下参数可以更改为使用全局平均池化的其他模型。
+# 例如 InceptionResnetV2 / NASNetLarge
 NETWORK_INPUT_SIZE = 224
 MODEL_CLASS = resnet.ResNet50
 PREPROCESS_FN = resnet.preprocess_input
@@ -24,7 +23,7 @@ LAST_CONV_LAYER = "activation_49"
 PRED_LAYER = "fc1000"
 ################################################################
 
-# number of imagenet classes
+# 图像类别数目
 N_CLASSES = 1000
 
 
@@ -66,22 +65,22 @@ def postprocess(preds, cams, top_k=1):
     return class_activation_map
 
 
-# 1. load image
+# 1. 载入图像
 imgs, original_img, original_size = load_img(INPUT_IMG_FILE,
                                              input_size=NETWORK_INPUT_SIZE,
                                              preprocess_fn=resnet.preprocess_input)
 
-# 2. prediction
+# 2. 预测
 model = get_cam_model(resnet.ResNet50,
                       NETWORK_INPUT_SIZE,
                       LAST_CONV_LAYER,
                       PRED_LAYER)
 preds, cams = model.predict(imgs)
 
-# 4. post processing
+# 3. 后期处理
 class_activation_map = postprocess(preds, cams)
 
-# 5. plot image+cam to original size
+# 4. 绘制 image+cam 为原始尺寸
 plt.imshow(original_img, alpha=0.5)
 plt.imshow(cv2.resize(class_activation_map,
                       original_size), cmap='jet', alpha=0.5)
