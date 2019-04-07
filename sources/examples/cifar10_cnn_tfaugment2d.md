@@ -1,11 +1,8 @@
+# 在 CIFAR10 小型图像数据集上利用数据增强训练一个简单的 CNN 网络。
 
-#Train a simple deep CNN on the CIFAR10 small images dataset using augmentation.
+使用 TensorFlow 内部数据增强 API，利用 LambdaLayer 将 ImageGenerator 替换为嵌入式的 AugmentLayer，在GPU上更快。
 
-Using TensorFlow internal augmentation APIs by replacing ImageGenerator with
-an embedded AugmentLayer using LambdaLayer, which is faster on GPU.
-
-** Benchmark of `ImageGenerator`(IG) vs `AugmentLayer`(AL) both using augmentation
-2D:**
+** `ImageGenerator`(IG) vs `AugmentLayer`(AL) 的评测结果，两者都使用 augmentation 2D:**
 
 (backend = Tensorflow-GPU, Nvidia Tesla P100-SXM2)
 
@@ -17,7 +14,7 @@ Epoch no. | IG %Accuracy   | IG Performance | AL %Accuracy  | AL Performance
 25        | 76.74          |  8 ms/step     | 76.17         | 280 us/step
 100       | 78.81          |  8 ms/step     | 78.70         | 285 us/step
 
-Settings: horizontal_flip = True
+设置: horizontal_flip = True
 
 
 Epoch no. | IG %Accuracy   | IG Performance | AL %Accuracy  | AL Performance
@@ -28,11 +25,10 @@ Epoch no. | IG %Accuracy   | IG Performance | AL %Accuracy  | AL Performance
 25        | 72.25          | 12 ms/step     | 71.08         | 287 us/step
 100       | 76.35          | 11 ms/step     | 74.62         | 286 us/step
 
-Settings: rotation = 30.0
+设置: rotation = 30.0
 
 
-(Corner process and rotation precision by `ImageGenerator` and `AugmentLayer`
-are slightly different.)
+(`ImageGenerator` 和 `AugmentLayer` 的转角处理和旋转精度均略有不同。)
 
 
 ```python
@@ -54,18 +50,18 @@ import tensorflow as tf
 
 
 def augment_2d(inputs, rotation=0, horizontal_flip=False, vertical_flip=False):
-    """Apply additive augmentation on 2D data.
+    """在 2D 数据上应用加性增强。
 
-    # Arguments
-      rotation: A float, the degree range for rotation (0 <= rotation < 180),
-          e.g. 3 for random image rotation between (-3.0, 3.0).
-      horizontal_flip: A boolean, whether to allow random horizontal flip,
-          e.g. true for 50% possibility to flip image horizontally.
-      vertical_flip: A boolean, whether to allow random vertical flip,
-          e.g. true for 50% possibility to flip image vertically.
+    # 参数
+      rotation: 浮点数，旋转的度数 (0 <= rotation < 180)，
+          例如， 3 表示图像在 (-3.0, 3.0) 度范围内随机旋转。
+      horizontal_flip: 布尔值，是否允许随机水平翻转，
+          例如， True 代表 50% 的几率水平翻转图像。
+      vertical_flip: 布尔值，是否允许随机垂直翻转，
+          例如， True 代表 50% 的几率垂直翻转图像。
 
-    # Returns
-      input data after augmentation, whose shape is the same as its original.
+    # 返回
+      增强后的输入数据，其尺寸元原数据相同。
     """
     if inputs.dtype != tf.float32:
         inputs = tf.image.convert_image_dtype(inputs, dtype=tf.float32)
@@ -115,13 +111,13 @@ num_predictions = 20
 save_dir = '/tmp/saved_models'
 model_name = 'keras_cifar10_trained_model.h5'
 
-# The data, split between train and test sets:
+# 数据，切分为训练集和测试集：
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 print('x_train shape:', x_train.shape)
 print(x_train.shape[0], 'train samples')
 print(x_test.shape[0], 'test samples')
 
-# Convert class vectors to binary class matrices.
+# 将类向量转换为二进制类矩阵。
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
 
@@ -150,7 +146,7 @@ model.add(Dropout(0.5))
 model.add(Dense(num_classes))
 model.add(Activation('softmax'))
 
-# initiate RMSprop optimizer
+# 初始化 RMSprop 优化器
 opt = keras.optimizers.rmsprop(lr=0.0001, decay=1e-6)
 
 # Let's train the model using RMSprop
@@ -169,14 +165,14 @@ model.fit(x_train, y_train,
           validation_data=(x_test, y_test),
           shuffle=True)
 
-# Save model and weights
+# 保存模型和权重
 if not os.path.isdir(save_dir):
     os.makedirs(save_dir)
 model_path = os.path.join(save_dir, model_name)
 model.save(model_path)
 print('Saved trained model at %s ' % model_path)
 
-# Score trained model.
+# 评估模型
 scores = model.evaluate(x_test, y_test, verbose=1)
 print('Test loss:', scores[0])
 print('Test accuracy:', scores[1])
