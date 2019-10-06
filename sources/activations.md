@@ -12,12 +12,12 @@ model.add(Activation('tanh'))
 
 等价于：
 
+
 ```python
 model.add(Dense(64, activation='tanh'))
 ```
 
 你也可以通过传递一个逐元素运算的 Theano/TensorFlow/CNTK 函数来作为激活函数：
-
 
 ```python
 from keras import backend as K
@@ -182,6 +182,15 @@ keras.activations.tanh(x)
 
 双曲正切激活函数。
 
+__参数__
+
+- __x__: 输入张量。
+
+__返回__
+
+双曲正切激活函数:
+`tanh(x) = (exp(x) - exp(-x)) / (exp(x) + exp(-x))`
+
 ----
 
 ### sigmoid
@@ -192,6 +201,14 @@ sigmoid(x)
 ```
 
 Sigmoid 激活函数。
+
+__参数__
+
+- __x__: 输入张量.
+
+__返回__
+
+Sigmoid激活函数: `1 / (1 + exp(-x))`.
 
 ----
 
@@ -208,14 +225,14 @@ Hard sigmoid 激活函数。
 
 __参数__
 
-- __x__: 张量。
+- __x__: 输入张量。
 
 __返回__
 
-Hard sigmoid 激活：
+Hard sigmoid 激活函数：
 
-- 如果 `x < -2.5`，返回 0。
-- 如果 `x > 2.5`，返回 1。
+- 如果 `x < -2.5`，返回 `0`。
+- 如果 `x > 2.5`，返回 `1`。
 - 如果 `-2.5 <= x <= 2.5`，返回 `0.2 * x + 0.5`。
 
 ----
@@ -239,6 +256,14 @@ keras.activations.linear(x)
 ```
 
 线性激活函数（即不做任何改变）
+
+__参数__
+
+- __x__: 输入张量。
+
+__返回__
+
+输入张量，不变。
 
 
 ## 高级激活函数
