@@ -162,7 +162,8 @@ def visualize_layer(model,
             img = deprocess_image(input_img_data[0])
             img = np.array(pil_image.fromarray(img).resize(intermediate_dim,
                                                            pil_image.BICUBIC))
-            input_img_data = [process_image(img, input_img_data[0])]
+            input_img_data = np.expand_dims(
+                process_image(img, input_img_data[0]), 0)
 
         # 解码生成的输入图像
         img = deprocess_image(input_img_data[0])

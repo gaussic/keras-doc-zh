@@ -1,4 +1,4 @@
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L767)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L796)</span>
 ### Dense
 
 ```python
@@ -68,7 +68,7 @@ nD 张量，尺寸: `(batch_size, ..., units)`。
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L276)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L277)</span>
 ### Activation
 
 ```python
@@ -97,7 +97,7 @@ __输出尺寸__
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L80)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L81)</span>
 ### Dropout
 
 ```python
@@ -127,7 +127,7 @@ __参考文献__
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L461)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L462)</span>
 ### Flatten
 
 ```python
@@ -210,7 +210,7 @@ model = Model(x, y)
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L310)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L311)</span>
 ### Reshape
 
 ```python
@@ -295,7 +295,7 @@ __输出尺寸__
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L523)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L524)</span>
 ### RepeatVector
 
 ```python
@@ -331,7 +331,7 @@ __输出尺寸__
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L565)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L566)</span>
 ### Lambda
 
 ```python
@@ -368,10 +368,30 @@ model.add(Lambda(antirectifier,
                  output_shape=antirectifier_output_shape))
 ```
 
+```python
+# 添加一个返回 hadamard 乘积和两个输入张量之和的层
+
+def hadamard_product_sum(tensors):
+    out1 = tensors[0] * tensors[1]
+    out2 = K.sum(out1, axis=-1)
+    return [out1, out2]
+
+def hadamard_product_sum_output_shape(input_shapes):
+    shape1 = list(input_shapes[0])
+    shape2 = list(input_shapes[1])
+    assert shape1 == shape2  # 否则无法得到 hadamard 乘积
+    return [tuple(shape1), tuple(shape2[:-1])]
+
+x1 = Dense(32)(input_1)
+x2 = Dense(32)(input_2)
+layer = Lambda(hadamard_product_sum, hadamard_product_sum_output_shape)
+x_hadamard, x_sum = layer([x1, x2])
+```
+
 __参数__
 
 - __function__: 需要封装的函数。
-将输入张量作为第一个参数。
+将输入张量或张量序列作为第一个参数。
 - __output_shape__: 预期的函数输出尺寸。
     只在使用 Theano 时有意义。
     可以是元组或者函数。
@@ -382,6 +402,7 @@ __参数__
         `output_shape = (None, ) + output_shape`
         如果是函数，它指定整个尺寸为输入尺寸的一个函数：
         `output_shape = f(input_shape)`
+- __mask__: 要么是 None (表示无 masking)，要么是一个张量表示用于 Embedding 的输入 mask。
 - __arguments__: 可选的需要传递给函数的关键字参数。
 
 __输入尺寸__
@@ -397,7 +418,7 @@ __输出尺寸__
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L911)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L940)</span>
 ### ActivityRegularization
 
 ```python
@@ -432,8 +453,7 @@ keras.layers.Masking(mask_value=0.0)
 
 使用覆盖值覆盖序列，以跳过时间步。
 
-对于输入张量的每一个时间步（张量的第一个维度），
-如果所有时间步中输入张量的值与 `mask_value` 相等，
+如果一个给定的样本时间步的所有特征都等于 `mask_value`，
 那么这个时间步将在所有下游层被覆盖 (跳过)
 （只要它们支持覆盖）。
 
@@ -444,10 +464,10 @@ __例__
 
 考虑将要喂入一个 LSTM 层的 Numpy 矩阵 `x`，
 尺寸为 `(samples, timesteps, features)`。
-你想要覆盖时间步 #3 和 #5，因为你缺乏这几个
-时间步的数据。你可以：
+你想要覆盖时间步 #3 的样本 #0，以及时间步 #5 的样本 #2，
+由于你缺乏这几个时间步的特征。你可以：
 
-- 设置 `x[:, 3, :] = 0.` 以及 `x[:, 5, :] = 0.`
+- 设置 `x[0, 3, :] = 0.` 以及 `x[2, 5, :] = 0.`
 - 在 LSTM 层之前，插入一个 `mask_value=0` 的 `Masking` 层：
 
 ```python
@@ -455,9 +475,14 @@ model = Sequential()
 model.add(Masking(mask_value=0., input_shape=(timesteps, features)))
 model.add(LSTM(32))
 ```
+
+__参数__
+
+- __mask_value__: 要么是 None，要么是一个要跳过的 mask 值。
+
 ---
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L140)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L141)</span>
 ### SpatialDropout1D
 
 ```python
@@ -486,7 +511,7 @@ __参考文献__
 
 ---
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L177)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L178)</span>
 ### SpatialDropout2D
 
 ```python
@@ -516,7 +541,7 @@ __参考文献__
 
 ---
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L227)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L228)</span>
 ### SpatialDropout3D
 
 ```python

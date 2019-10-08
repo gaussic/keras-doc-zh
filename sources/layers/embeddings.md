@@ -36,6 +36,8 @@ __参数__
 (详见 [initializers](../initializers.md))。
 - __embeddings_regularizer__: `embeddings` matrix 的正则化方法
 (详见 [regularizer](../regularizers.md))。
+- __activity_regularizer__: 应用到层输出的正则化函数 (它的 "activation")。
+    (详见 [regularizer](../regularizers.md))。
 - __embeddings_constraint__: `embeddings` matrix 的约束函数
 (详见 [constraints](../constraints.md))。
 - __mask_zero__: 是否把 0 看作为一个应该被遮蔽的特殊的 "padding" 值。

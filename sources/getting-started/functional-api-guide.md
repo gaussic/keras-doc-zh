@@ -24,9 +24,9 @@ from keras.models import Model
 inputs = Input(shape=(784,))
 
 # 层的实例是可调用的，它以张量为参数，并且返回一个张量
-x = Dense(64, activation='relu')(inputs)
-x = Dense(64, activation='relu')(x)
-predictions = Dense(10, activation='softmax')(x)
+output_1 = Dense(64, activation='relu')(inputs)
+output_2 = Dense(64, activation='relu')(output_1)
+predictions = Dense(10, activation='softmax')(output_2)
 
 # 这部分创建了一个包含输入层和三个全连接层的模型
 model = Model(inputs=inputs, outputs=predictions)
@@ -84,6 +84,8 @@ processed_sequences = TimeDistributed(model)(input_sequences)
 ```python
 from keras.layers import Input, Embedding, LSTM, Dense
 from keras.models import Model
+import numpy as np
+np.random.seed(0)  # 设置随机种子，用于复现结果
 
 # 标题输入：接收一个含有 100 个整数的序列，每个整数在 1 到 10000 之间。
 # 注意我们可以通过传递一个 "name" 参数来命名任何层。
@@ -136,7 +138,11 @@ model.compile(optimizer='rmsprop', loss='binary_crossentropy',
 我们可以通过传递输入数组和目标数组的列表来训练模型：
 
 ```python
-model.fit([headline_data, additional_data], [labels, labels],
+headline_data = np.round(np.abs(np.random.rand(12, 100) * 100))
+additional_data = np.random.randn(12, 5)
+headline_labels = np.random.randn(12, 1)
+additional_labels = np.random.randn(12, 1)
+model.fit([headline_data, additional_data], [headline_labels, additional_labels],
           epochs=50, batch_size=32)
 ```
 
@@ -149,8 +155,18 @@ model.compile(optimizer='rmsprop',
 
 # 然后使用以下方式训练：
 model.fit({'main_input': headline_data, 'aux_input': additional_data},
-          {'main_output': labels, 'aux_output': labels},
+          {'main_output': headline_labels, 'aux_output': additional_labels},
           epochs=50, batch_size=32)
+```
+
+若使用此模型做推理，可以
+```python
+model.predict({'main_input': headline_data, 'aux_input': additional_data})
+```
+
+或者
+```python
+pred = model.predict([headline_data, additional_data])
 ```
 
 -----

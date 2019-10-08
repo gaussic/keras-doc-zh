@@ -1,13 +1,12 @@
 # Keras 实现的 Deep Dreaming。
 
 按以下命令执行该脚本：
-
-```
+```python
 python deep_dream.py path_to_your_base_image.jpg prefix_for_results
 ```
 
 例如：
-```
+```python
 python deep_dream.py img/mypic.jpg results/dream
 ```
 
@@ -90,9 +89,9 @@ for layer_name in settings['features']:
     # 我们通过仅涉及损失中的非边界像素来避免边界伪影。
     scaling = K.prod(K.cast(K.shape(x), 'float32'))
     if K.image_data_format() == 'channels_first':
-        loss += coeff * K.sum(K.square(x[:, :, 2: -2, 2: -2])) / scaling
+        loss = loss + coeff * K.sum(K.square(x[:, :, 2: -2, 2: -2])) / scaling
     else:
-        loss += coeff * K.sum(K.square(x[:, 2: -2, 2: -2, :])) / scaling
+        loss = loss + coeff * K.sum(K.square(x[:, 2: -2, 2: -2, :])) / scaling
 
 # 计算 dream 即损失的梯度。
 grads = K.gradients(loss, dream)[0]

@@ -1,4 +1,4 @@
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/recurrent.py#L237)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/recurrent.py#L238)</span>
 ### RNN
 
 ```python
@@ -49,7 +49,7 @@ __输出尺寸__
 
 - 如果 `return_state`：返回张量列表。
 第一个张量为输出。剩余的张量为最后的状态，
-每个张量的尺寸为 `(batch_size, units)`。
+每个张量的尺寸为 `(batch_size, units)`。例如，对于 RNN/GRU，状态张量数目为 1，对 LSTM 为 2。
 - 如果 `return_sequences`：返回 3D 张量，
 尺寸为 `(batch_size, timesteps, units)`。
 - 否则，返回尺寸为 `(batch_size, units)` 的 2D 张量。
@@ -140,7 +140,7 @@ y = layer(x)
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/recurrent.py#L944)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/recurrent.py#L947)</span>
 ### SimpleRNN
 
 ```python
@@ -198,11 +198,11 @@ __参数__
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/recurrent.py#L1482)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/recurrent.py#L1524)</span>
 ### GRU
 
 ```python
-keras.layers.GRU(units, activation='tanh', recurrent_activation='hard_sigmoid', use_bias=True, kernel_initializer='glorot_uniform', recurrent_initializer='orthogonal', bias_initializer='zeros', kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None, activity_regularizer=None, kernel_constraint=None, recurrent_constraint=None, bias_constraint=None, dropout=0.0, recurrent_dropout=0.0, implementation=1, return_sequences=False, return_state=False, go_backwards=False, stateful=False, unroll=False, reset_after=False)
+keras.layers.GRU(units, activation='tanh', recurrent_activation='sigmoid', use_bias=True, kernel_initializer='glorot_uniform', recurrent_initializer='orthogonal', bias_initializer='zeros', kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None, activity_regularizer=None, kernel_constraint=None, recurrent_constraint=None, bias_constraint=None, dropout=0.0, recurrent_dropout=0.0, implementation=2, return_sequences=False, return_state=False, go_backwards=False, stateful=False, unroll=False, reset_after=False)
 ```
 
 门限循环单元网络（Gated Recurrent Unit） - Cho et al. 2014.
@@ -282,11 +282,11 @@ __参考文献__
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/recurrent.py#L2034)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/recurrent.py#L2086)</span>
 ### LSTM
 
 ```python
-keras.layers.LSTM(units, activation='tanh', recurrent_activation='hard_sigmoid', use_bias=True, kernel_initializer='glorot_uniform', recurrent_initializer='orthogonal', bias_initializer='zeros', unit_forget_bias=True, kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None, activity_regularizer=None, kernel_constraint=None, recurrent_constraint=None, bias_constraint=None, dropout=0.0, recurrent_dropout=0.0, implementation=1, return_sequences=False, return_state=False, go_backwards=False, stateful=False, unroll=False)
+keras.layers.LSTM(units, activation='tanh', recurrent_activation='sigmoid', use_bias=True, kernel_initializer='glorot_uniform', recurrent_initializer='orthogonal', bias_initializer='zeros', unit_forget_bias=True, kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None, activity_regularizer=None, kernel_constraint=None, recurrent_constraint=None, bias_constraint=None, dropout=0.0, recurrent_dropout=0.0, implementation=2, return_sequences=False, return_state=False, go_backwards=False, stateful=False, unroll=False)
 ```
 
 长短期记忆网络层（Long Short-Term Memory） - Hochreiter 1997.
@@ -315,7 +315,7 @@ __参数__
 - __unit_forget_bias__: 布尔值。
 如果为 True，初始化时，将忘记门的偏置加 1。
 将其设置为 True 同时还会强制 `bias_initializer="zeros"`。
-这个建议来自 [Jozefowicz et al.](http://www.jmlr.org/proceedings/papers/v37/jozefowicz15.pdf)。
+这个建议来自 [Jozefowicz et al. (2015)](http://www.jmlr.org/proceedings/papers/v37/jozefowicz15.pdf)。
 - __kernel_regularizer__: 运用到 `kernel` 权值矩阵的正则化函数
 (详见 [regularizer](../regularizers.md))。
 - __recurrent_regularizer__: 运用到 `recurrent_kernel` 权值矩阵的正则化函数
@@ -339,7 +339,7 @@ __参数__
 而模式 2 将把它们分批到更少，更大的操作中。
 这些模式在不同的硬件和不同的应用中具有不同的性能配置文件。
 - __return_sequences__: 布尔值。是返回输出序列中的最后一个输出，还是全部序列。
-- __return_state__: 布尔值。除了输出之外是否返回最后一个状态。
+- __return_state__: 布尔值。除了输出之外是否返回最后一个状态。状态列表的返回元素分别是隐藏状态和单元状态。
 - __go_backwards__: 布尔值 (默认 False)。
 如果为 True，则向后处理输入序列并返回相反的序列。
 - __stateful__: 布尔值 (默认 False)。
@@ -359,7 +359,7 @@ __参考文献__
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/convolutional_recurrent.py#L788)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/convolutional_recurrent.py#L795)</span>
 ### ConvLSTM2D
 
 ```python
@@ -408,7 +408,7 @@ __参数__
 - __unit_forget_bias__: 布尔值。
 如果为 True，初始化时，将忘记门的偏置加 1。
 将其设置为 True 同时还会强制 `bias_initializer="zeros"`。
-这个建议来自 [Jozefowicz et al.](http://www.jmlr.org/proceedings/papers/v37/jozefowicz15.pdf)。
+这个建议来自 [Jozefowicz et al. (2015)](http://www.jmlr.org/proceedings/papers/v37/jozefowicz15.pdf)。
 - __kernel_regularizer__: 运用到 `kernel` 权值矩阵的正则化函数
 (详见 [regularizer](../regularizers.md))。
 - __recurrent_regularizer__: 运用到 `recurrent_kernel` 权值矩阵的正则化函数
@@ -466,7 +466,81 @@ Precipitation Nowcasting](http://arxiv.org/abs/1506.04214v1)。
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/recurrent.py#L779)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/convolutional_recurrent.py#L479)</span>
+### ConvLSTM2DCell
+
+```python
+keras.layers.ConvLSTM2DCell(filters, kernel_size, strides=(1, 1), padding='valid', data_format=None, dilation_rate=(1, 1), activation='tanh', recurrent_activation='hard_sigmoid', use_bias=True, kernel_initializer='glorot_uniform', recurrent_initializer='orthogonal', bias_initializer='zeros', unit_forget_bias=True, kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None, kernel_constraint=None, recurrent_constraint=None, bias_constraint=None, dropout=0.0, recurrent_dropout=0.0)
+```
+
+Cell class for the ConvLSTM2D layer.
+
+__Arguments__
+
+- __filters__: Integer, the dimensionality of the output space
+    (i.e. the number of output filters in the convolution).
+- __kernel_size__: An integer or tuple/list of n integers, specifying the
+    dimensions of the convolution window.
+- __strides__: An integer or tuple/list of n integers,
+    specifying the strides of the convolution.
+    Specifying any stride value != 1 is incompatible with specifying
+    any `dilation_rate` value != 1.
+- __padding__: One of `"valid"` or `"same"` (case-insensitive).
+- __data_format__: A string,
+    one of `"channels_last"` (default) or `"channels_first"`.
+    It defaults to the `image_data_format` value found in your
+    Keras config file at `~/.keras/keras.json`.
+    If you never set it, then it will be `"channels_last"`.
+- __dilation_rate__: An integer or tuple/list of n integers, specifying
+    the dilation rate to use for dilated convolution.
+    Currently, specifying any `dilation_rate` value != 1 is
+    incompatible with specifying any `strides` value != 1.
+- __activation__: Activation function to use
+    (see [activations](../activations.md)).
+- __recurrent_activation__: Activation function to use
+    for the recurrent step
+    (see [activations](../activations.md)).
+- __use_bias__: Boolean, whether the layer uses a bias vector.
+- __kernel_initializer__: Initializer for the `kernel` weights matrix,
+    used for the linear transformation of the inputs.
+    (see [initializers](../initializers.md)).
+- __recurrent_initializer__: Initializer for the `recurrent_kernel`
+    weights matrix,
+    used for the linear transformation of the recurrent state.
+    (see [initializers](../initializers.md)).
+- __bias_initializer__: Initializer for the bias vector
+    (see [initializers](../initializers.md)).
+- __unit_forget_bias__: Boolean.
+    If True, add 1 to the bias of the forget gate at initialization.
+    Use in combination with `bias_initializer="zeros"`.
+    This is recommended in [Jozefowicz et al. (2015)](
+    http://www.jmlr.org/proceedings/papers/v37/jozefowicz15.pdf).
+- __kernel_regularizer__: Regularizer function applied to
+    the `kernel` weights matrix
+    (see [regularizer](../regularizers.md)).
+- __recurrent_regularizer__: Regularizer function applied to
+    the `recurrent_kernel` weights matrix
+    (see [regularizer](../regularizers.md)).
+- __bias_regularizer__: Regularizer function applied to the bias vector
+    (see [regularizer](../regularizers.md)).
+- __kernel_constraint__: Constraint function applied to
+    the `kernel` weights matrix
+    (see [constraints](../constraints.md)).
+- __recurrent_constraint__: Constraint function applied to
+    the `recurrent_kernel` weights matrix
+    (see [constraints](../constraints.md)).
+- __bias_constraint__: Constraint function applied to the bias vector
+    (see [constraints](../constraints.md)).
+- __dropout__: Float between 0 and 1.
+    Fraction of the units to drop for
+    the linear transformation of the inputs.
+- __recurrent_dropout__: Float between 0 and 1.
+    Fraction of the units to drop for
+    the linear transformation of the recurrent state.
+    
+----
+
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/recurrent.py#L812)</span>
 ### SimpleRNNCell
 
 ```python
@@ -511,11 +585,11 @@ __参数__
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/recurrent.py#L1163)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/recurrent.py#L1196)</span>
 ### GRUCell
 
 ```python
-keras.layers.GRUCell(units, activation='tanh', recurrent_activation='hard_sigmoid', use_bias=True, kernel_initializer='glorot_uniform', recurrent_initializer='orthogonal', bias_initializer='zeros', kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None, kernel_constraint=None, recurrent_constraint=None, bias_constraint=None, dropout=0.0, recurrent_dropout=0.0, implementation=1, reset_after=False)
+keras.layers.GRUCell(units, activation='tanh', recurrent_activation='sigmoid', use_bias=True, kernel_initializer='glorot_uniform', recurrent_initializer='orthogonal', bias_initializer='zeros', kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None, kernel_constraint=None, recurrent_constraint=None, bias_constraint=None, dropout=0.0, recurrent_dropout=0.0, implementation=2, reset_after=False)
 ```
 
 GRU 层的单元类。
@@ -572,11 +646,11 @@ True = "after" (CuDNN compatible).
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/recurrent.py#L1756)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/recurrent.py#L1798)</span>
 ### LSTMCell
 
 ```python
-keras.layers.LSTMCell(units, activation='tanh', recurrent_activation='hard_sigmoid', use_bias=True, kernel_initializer='glorot_uniform', recurrent_initializer='orthogonal', bias_initializer='zeros', unit_forget_bias=True, kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None, kernel_constraint=None, recurrent_constraint=None, bias_constraint=None, dropout=0.0, recurrent_dropout=0.0, implementation=1)
+keras.layers.LSTMCell(units, activation='tanh', recurrent_activation='sigmoid', use_bias=True, kernel_initializer='glorot_uniform', recurrent_initializer='orthogonal', bias_initializer='zeros', unit_forget_bias=True, kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None, kernel_constraint=None, recurrent_constraint=None, bias_constraint=None, dropout=0.0, recurrent_dropout=0.0, implementation=2)
 ```
 
 LSTM 层的单元类。
@@ -604,7 +678,7 @@ __参数__
 - __unit_forget_bias__: 布尔值。
 如果为 True，初始化时，将忘记门的偏置加 1。
 将其设置为 True 同时还会强制 `bias_initializer="zeros"`。
-这个建议来自 [Jozefowicz et al.](http://www.jmlr.org/proceedings/papers/v37/jozefowicz15.pdf)。
+这个建议来自 [Jozefowicz et al. (2015)](http://www.jmlr.org/proceedings/papers/v37/jozefowicz15.pdf)。
 - __kernel_regularizer__: 运用到 `kernel` 权值矩阵的正则化函数
 (详见 [regularizer](../regularizers.md))。
 - __recurrent_regularizer__: 运用到 `recurrent_kernel` 权值矩阵的正则化函数
@@ -690,15 +764,15 @@ __参数__
 - __kernel_initializer__: `kernel` 权值矩阵的初始化器，
 用于输入的线性转换
 (详见 [initializers](../initializers.md))。
-- __unit_forget_bias__: 布尔值。
-如果为 True，初始化时，将忘记门的偏置加 1。
-将其设置为 True 同时还会强制 `bias_initializer="zeros"`。
-这个建议来自 [Jozefowicz et al.](http://www.jmlr.org/proceedings/papers/v37/jozefowicz15.pdf)。
 - __recurrent_initializer__: `recurrent_kernel` 权值矩阵
 的初始化器，用于循环层状态的线性转换
 (详见 [initializers](../initializers.md))。
 - __bias_initializer__:偏置向量的初始化器
 (详见[initializers](../initializers.md)).
+- __unit_forget_bias__: 布尔值。
+如果为 True，初始化时，将忘记门的偏置加 1。
+将其设置为 True 同时还会强制 `bias_initializer="zeros"`。
+这个建议来自 [Jozefowicz et al. (2015)](http://www.jmlr.org/proceedings/papers/v37/jozefowicz15.pdf)。
 - __kernel_regularizer__: 运用到 `kernel` 权值矩阵的正则化函数
 (详见 [regularizer](../regularizers.md))。
 - __recurrent_regularizer__: 运用到 `recurrent_kernel` 权值矩阵的正则化函数

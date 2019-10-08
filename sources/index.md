@@ -21,6 +21,18 @@ Keras 兼容的 Python 版本: __Python 2.7-3.6__。
 
 ------------------
 
+## 多后端 Keras 和 tf.keras:
+
+**目前，我们推荐使用 TensorFlow 后端的 Keras 用户切换到 TensorFlow 2.0 中的 `tf.keras`。** `tf.keras` 得到了更好的维护，并与 TensorFlow 功能具有更好的集成（eager执行，分布式支持及其他）。
+
+Keras 2.2.5 是 Keras 实现 2.2.* API 的最后一个版本。它是最后一个仅支持 TensorFlow 1（以及 Theano 和 CNTK）的版本。
+
+Keras 的当前版本是 2.3.0，它对 API 做了重大的调整，并且添加了 TensorFlow 2.0 的支持。The 2.3.0 版本将会是最后一个多后端 Keras 主版本。多后端 Keras 被 `tf.keras` 取代。
+
+多后端Keras中存在的错误修复仅会持续到2020年4月（作为次要版本的一部分）。
+
+关于 Keras 未来的更多信息，详见 [the Keras meeting notes](http://bit.ly/keras-meeting-notes)。
+
 
 ## 指导原则
 
@@ -127,6 +139,9 @@ classes = model.predict(x_test, batch_size=128)
 然后你就可以安装 Keras 本身了。有两种方法安装 Keras：
 
 - **使用 PyPI 安装 Keras (推荐)：**
+
+注意：这些安装步骤假定你在 Linux 或 Mac 环境中。
+如果你使用的是 Windows，则需要删除 `sudo` 才能运行以下命令。
 
 ```sh
 sudo pip install keras
