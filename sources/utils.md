@@ -25,7 +25,7 @@ with CustomObjectScope({'MyObject':MyObject}):
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/utils/io_utils.py#L25)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/utils/io_utils.py#L26)</span>
 ### HDF5Matrix
 
 ```python
@@ -61,7 +61,7 @@ __返回__
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/utils/data_utils.py#L302)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/utils/data_utils.py#L305)</span>
 ### Sequence
 
 ```python
@@ -270,6 +270,10 @@ __参数__
 'LR' 创建一个水平绘图。
 - __expand_nested__: 是否扩展嵌套模型为聚类。 
 - __dpi__: 点 DPI。
+
+__返回__
+
+如果安装了 Jupyter，则返回一个 Jupyter notebook Image 对象。这样可以在 notebool 中在线显示模型图。
 
 ----
 
