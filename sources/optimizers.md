@@ -58,6 +58,7 @@ keras.optimizers.SGD(learning_rate=0.01, momentum=0.0, nesterov=False)
 随机梯度下降优化器。
 
 包含扩展功能的支持：
+
 - 动量（momentum）优化,
 - 学习率衰减（每次参数更新后）
 - Nestrov 动量 (NAG) 优化

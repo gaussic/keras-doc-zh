@@ -103,12 +103,11 @@ __参数__
     验证数据是混洗之前 `x` 和`y` 数据的最后一部分样本中。
     这个参数在 `x` 是生成器或 `Sequence` 实例时不支持。
 - __validation_data__: 用于在每个轮次结束后评估损失和任意指标的数据。
-    模型不会在这个数据上训练。
-    `validation_data` 会覆盖 `validation_split`。
+    模型不会在这个数据上训练。`validation_data` 会覆盖 `validation_split`。
     `validation_data` 可以是：
-        - 元组 `(x_val, y_val)` 或 Numpy 数组或张量
-        - 元组 `(x_val, y_val, val_sample_weights)` 或 Numpy 数组。
-        - 数据集或数据集迭代器。
+      - 元组 `(x_val, y_val)` 或 Numpy 数组或张量
+      - 元组 `(x_val, y_val, val_sample_weights)` 或 Numpy 数组。
+      - 数据集或数据集迭代器。
 
     对于前两种情况，必须提供 `batch_size`。
     对于最后一种情况，必须提供 `validation_steps`。

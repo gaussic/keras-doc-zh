@@ -16,7 +16,7 @@ theme:
   collapse_navigation: true
 
 docs_dir: sources
-repo_url: http://github.com/keras-team/keras/keras-docs-zh
+repo_url: http://github.com/keras-team/keras-docs-zh
 site_url: http://keras.io/zh/
 site_description: 'Keras，Python 深度学习库中文文档。'
 
@@ -68,23 +68,23 @@ nav:
 - 工具 Utils: utils.md
 - 贡献: contributing.md
 - 经典样例:
-  - Addition RNN: examples/addition_rnn.md
+  - RNN 加法: examples/addition_rnn.md
+  - 自定义层 - antirectifier: examples/antirectifier.md
   - Baby RNN: examples/babi_rnn.md
   - Baby MemNN: examples/babi_memnn.md
-  - Custom layer - antirectifier: examples/antirectifier.md
   - CIFAR-10 CNN: examples/cifar10_cnn.md
   - CIFAR-10 ResNet: examples/cifar10_resnet.md
-  - Convolution filter visualization: examples/conv_filter_visualization.md
-  - Convolutional LSTM: examples/conv_lstm.md
+  - 卷积滤波器可视化: examples/conv_filter_visualization.md
+  - 卷积 LSTM: examples/conv_lstm.md
   - Deep Dream: examples/deep_dream.md
-  - Image OCR: examples/image_ocr.md
-  - Bidirectional LSTM: examples/imdb_bidirectional_lstm.md
-  - 1D CNN for text classification: examples/imdb_cnn.md
-  - Sentiment classification CNN-LSTM: examples/imdb_cnn_lstm.md
-  - Fasttext for text classification: examples/imdb_fasttext.md
-  - Sentiment classification LSTM: examples/imdb_lstm.md
-  - Sequence to sequence - training: examples/lstm_seq2seq.md
-  - Sequence to sequence - prediction: examples/lstm_seq2seq_restore.md
+  - 图片 OCR: examples/image_ocr.md
+  - 双向 LSTM: examples/imdb_bidirectional_lstm.md
+  - 1D CNN 文本分类: examples/imdb_cnn.md
+  - CNN-LSTM 情感分类: examples/imdb_cnn_lstm.md
+  - Fasttext 文本分类: examples/imdb_fasttext.md
+  - LSTM 情感分类: examples/imdb_lstm.md
+  - Sequence to sequence - 训练: examples/lstm_seq2seq.md
+  - Sequence to sequence - 预测: examples/lstm_seq2seq_restore.md
   - Stateful LSTM: examples/lstm_stateful.md
-  - LSTM for text generation: examples/lstm_text_generation.md
-  - Auxiliary Classifier GAN: examples/mnist_acgan.md
+  - LSTM for 文本生成: examples/lstm_text_generation.md
+  - GAN 辅助分类器: examples/mnist_acgan.md

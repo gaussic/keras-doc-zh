@@ -154,7 +154,7 @@ __返回__
 
 字符串，Keras 目前正在使用的后端名。
 
-__例子__
+__示例__
 
 ```python
 >>> keras.backend.backend()
@@ -266,7 +266,7 @@ __返回__
 
 一个浮点数。
 
-__例子__
+__示例__
 
 ```python
 >>> keras.backend.epsilon()
@@ -302,7 +302,7 @@ __参数__
 
 - __e__: 浮点数。新的 epsilon 值。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -330,7 +330,7 @@ __返回__
 
 字符串，当前默认的浮点类型。
 
-__例子__
+__示例__
 
 ```python
 >>> keras.backend.floatx()
@@ -353,7 +353,7 @@ __参数__
 
 - __floatx__: 字符串，'float16', 'float32', 或 'float64'。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -384,7 +384,7 @@ __返回__
 
 相同的 Numpy 数组，转换为它的新类型。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -416,7 +416,7 @@ __返回__
 
 一个字符串，`'channels_first'` 或 `'channels_last'`
 
-__例子__
+__示例__
 
 ```python
 >>> keras.backend.image_data_format()
@@ -439,7 +439,7 @@ __参数__
 
 - __data_format__: 字符串。`'channels_first'` 或 `'channels_last'`。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -526,7 +526,7 @@ __返回__
 
 布尔值。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -558,7 +558,7 @@ __返回__
 
 一个稠密张量。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -593,7 +593,7 @@ __返回__
 
 变量实例（包含 Keras 元数据）
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -668,7 +668,7 @@ __异常__
 
 - __ValueError__: 如果 `x` 不是一个符号张量。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -732,7 +732,7 @@ __返回__
 
 张量实例（包括 Keras 元数据）。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -783,10 +783,10 @@ __返回__
 
 符号尺寸（它本身就是张量）。
 
-__例子__
+__示例__
 
 ```python
-# TensorFlow 例子
+# TensorFlow 示例
 >>> from keras import backend as K
 >>> tf_session = K.get_session()
 >>> val = np.array([[1, 2], [3, 4]])
@@ -823,7 +823,7 @@ __返回__
 
 整数元组（或 None 项）。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -863,7 +863,7 @@ __返回__
 
 整数 (标量), 轴的数量。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -935,7 +935,7 @@ __返回__
 
 字符串，`x` 的 dtype。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -982,7 +982,7 @@ __返回__
 
 Numpy 数组。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -1024,7 +1024,7 @@ __返回__
 请注意，如果 `shape` 是符号化的，我们不能返回一个变量，
 而会返回一个动态尺寸的张量。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -1067,7 +1067,7 @@ __返回__
 请注意，如果 `shape` 是符号化的，我们不能返回一个变量，
 而会返回一个动态尺寸的张量。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -1108,7 +1108,7 @@ __返回__
 
 Keras 变量，一个单位矩阵。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -1131,6 +1131,7 @@ def eye(size, dtype=None, name=None):
     else:
         n, m = size, size
     return np.eye(n, m, dtype=dtype)
+```
 
 ----
 
@@ -1155,7 +1156,7 @@ __返回__
 
 一个 Keras 变量，其形状为 x，用零填充。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -1198,7 +1199,7 @@ __返回__
 
 一个 Keras 变量，其形状为 x，用一填充。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -1263,7 +1264,7 @@ __返回__
 
 一个 Keras 变量，以抽取的样本填充。
 
-__例子__
+__示例__
 
 ```python
 # TensorFlow 示例
@@ -1309,7 +1310,7 @@ __返回__
 
 一个 Keras 变量，以抽取的样本填充。
 
-__例子__
+__示例__
 
 ```python
 # TensorFlow 示例
@@ -1349,7 +1350,7 @@ __返回__
 
 整数，`x` 中的元素数量，即，数组中静态维度的乘积。
 
-__例子__
+__示例__
 
 ```python
 >>> kvar = K.zeros((2,3))
@@ -1391,7 +1392,7 @@ __返回__
 
 Keras 张量，类型为 `dtype`。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -1519,7 +1520,7 @@ __返回__
 
 一个张量，`x` 和 `y` 的点积。
 
-__例子__
+__示例__
 
 ```python
 # 张量之间的点积
@@ -1540,7 +1541,7 @@ __例子__
 ```
 
 ```python
-# 类 Theano 行为的例子
+# 类 Theano 行为的示例
 >>> x = K.random_uniform_variable(shape=(2, 3), low=0, high=1)
 >>> y = K.ones((4, 3, 5))
 >>> xy = K.dot(x, y)
@@ -1586,7 +1587,7 @@ __返回__
 一个尺寸等于 `x` 的尺寸（减去总和的维度）和 `y` 的尺寸（减去批次维度和总和的维度）的连接的张量。
 如果最后的秩为 1，我们将它重新转换为 `(batch_size, 1)`。
 
-__例子__
+__示例__
 
 假设 `x = [[1, 2], [3, 4]]` 和 `y = [[5, 6], [7, 8]]`，
 `batch_dot(x, y, axes=1) = [[17], [53]]` 是 `x.dot(y.T)` 的主对角线，
@@ -1705,7 +1706,7 @@ __返回__
 
 一个张量。
 
-__例子__
+__示例__
 
 ```python
 >>> var = K.variable([[1, 2, 3], [4, 5, 6]])
@@ -2954,7 +2955,7 @@ __返回__
 
 一个平铺的张量。
 
-__例子__
+__示例__
 
 ```python
 >>> from keras import backend as K
@@ -3343,7 +3344,7 @@ keras.backend.print_tensor(x, message='')
 
 请注意，`print_tensor` 返回一个与 `x` 相同的新张量，应该在后面的代码中使用它。否则在评估过程中不会考虑打印操作。
 
-__例子__
+__示例__
 
 ```python
 >>> x = K.print_tensor(x, message="x is: ")

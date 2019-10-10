@@ -6,7 +6,7 @@
 
 ```python
 keras.preprocessing.text.Tokenizer(num_words=None, 
-                                   filters='!"#$%&()*+,-./:;<=>?@[\]^_`{|}~	', 
+                                   filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n', 
                                    lower=True, 
                                    split=' ', 
                                    char_level=False, 
@@ -18,7 +18,7 @@ keras.preprocessing.text.Tokenizer(num_words=None,
 
 该类允许使用两种方法向量化一个文本语料库：
 将每个文本转化为一个整数序列（每个整数都是词典中标记的索引）；
-或者将其转化为一个向量，其中每个标记的系数可以是二进制值、词频、TF-IDF权重等。
+或者将其转化为一个向量，其中每个标记的系数可以是二进制值、词频、TF-IDF 权重等。
 
 __参数__
 
@@ -41,9 +41,11 @@ __参数__
 
 
 ```python
-keras.preprocessing.text.hashing_trick(text, n,
+keras.preprocessing.text.hashing_trick(text, 
+                                       n, 
                                        hash_function=None, 
-                                       filters='!"#$%&()*+,-./:;<=>?@[\]^_`{|}~	', lower=True, 
+                                       filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n', 
+                                       lower=True, 
                                        split=' ')
 ```
 
@@ -75,8 +77,9 @@ __返回__
 
 
 ```python
-keras.preprocessing.text.one_hot(text, n, 
-                                 filters='!"#$%&()*+,-./:;<=>?@[\]^_`{|}~', 
+keras.preprocessing.text.one_hot(text, 
+                                 n, 
+                                 filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n', 
                                  lower=True, 
                                  split=' ')
 ```
@@ -107,7 +110,7 @@ __返回__
 
 ```python
 keras.preprocessing.text.text_to_word_sequence(text, 
-                                               filters='!"#$%&()*+,-./:;<=>?@[\]^_`{|}~	', 
+                                               filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n', 
                                                lower=True, 
                                                split=' ')
 ```

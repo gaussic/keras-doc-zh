@@ -272,12 +272,9 @@ keras.callbacks.callbacks.LambdaCallback(on_epoch_begin=None, on_epoch_end=None,
 这个回调函数和匿名函数在合适的时间被创建。
 需要注意的是回调函数要求位置型参数，如下：
 
-- `on_epoch_begin` 和 `on_epoch_end` 要求两个位置型的参数：
-`epoch`, `logs`
-- `on_batch_begin` 和 `on_batch_end` 要求两个位置型的参数：
-`batch`, `logs`
-- `on_train_begin` 和 `on_train_end` 要求一个位置型的参数：
-`logs`
+- `on_epoch_begin` 和 `on_epoch_end` 要求两个位置型的参数：`epoch`, `logs`
+- `on_batch_begin` 和 `on_batch_end` 要求两个位置型的参数：`batch`, `logs`
+- `on_train_begin` 和 `on_train_end` 要求一个位置型的参数：`logs`
 
 __参数__
 
@@ -288,7 +285,7 @@ __参数__
 - __on_train_begin__: 在模型训练开始时被调用。
 - __on_train_end__: 在模型训练结束时被调用。
 
-__例子__
+__示例__
 
 
 ```python
@@ -374,7 +371,7 @@ Numpy 数组（如果模型有单个输入）或 Numpy 数组列表（如果模�
 ----
 
 
-# 创建一个回调函数
+# 创建一个回调
 
 你可以通过扩展 `keras.callbacks.Callback` 基类来创建一个自定义的回调函数。
 通过类的属性 `self.model`，回调函数可以获得它所联系的模型。
@@ -392,7 +389,7 @@ class LossHistory(keras.callbacks.Callback):
 
 ---
 
-### 例: 记录损失历史
+### 示例: 记录损失历史
 
 ```python
 class LossHistory(keras.callbacks.Callback):
@@ -419,7 +416,7 @@ print(history.losses)
 
 ---
 
-### 例: 模型检查点
+### 示例: 模型检查点
 
 ```python
 from keras.callbacks import ModelCheckpoint

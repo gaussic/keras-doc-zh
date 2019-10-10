@@ -94,7 +94,7 @@ __关于给 RNN 传递外部常量的说明__
 这要求 `cell.call` 方法接受相同的关键字参数 `constants`。
 这些常数可用于调节附加静态输入（不随时间变化）上的单元转换，也可用于注意力机制。
 
-__例子__
+__示例__
 
 
 ```python
@@ -352,7 +352,7 @@ __参数__
 
 __参考文献__
 
-- [Long short-term memory](http://www.bioinf.jku.at/publications/older/2604.pdf) (original 1997 paper)
+- [Long short-term memory](http://www.bioinf.jku.at/publications/older/2604.pdf)
 - [Learning to forget: Continual prediction with LSTM](http://www.mitpressjournals.org/doi/pdf/10.1162/089976600300015015)
 - [Supervised sequence labeling with recurrent neural networks](http://www.cs.toronto.edu/~graves/preprint.pdf)
 - [A Theoretically Grounded Application of Dropout in Recurrent Neural Networks](http://arxiv.org/abs/1512.05287)
@@ -473,70 +473,63 @@ Precipitation Nowcasting](http://arxiv.org/abs/1506.04214v1)。
 keras.layers.ConvLSTM2DCell(filters, kernel_size, strides=(1, 1), padding='valid', data_format=None, dilation_rate=(1, 1), activation='tanh', recurrent_activation='hard_sigmoid', use_bias=True, kernel_initializer='glorot_uniform', recurrent_initializer='orthogonal', bias_initializer='zeros', unit_forget_bias=True, kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None, kernel_constraint=None, recurrent_constraint=None, bias_constraint=None, dropout=0.0, recurrent_dropout=0.0)
 ```
 
-Cell class for the ConvLSTM2D layer.
+ConvLSTM2D 层的单元类。
 
-__Arguments__
+__参数__
 
-- __filters__: Integer, the dimensionality of the output space
-    (i.e. the number of output filters in the convolution).
-- __kernel_size__: An integer or tuple/list of n integers, specifying the
-    dimensions of the convolution window.
-- __strides__: An integer or tuple/list of n integers,
-    specifying the strides of the convolution.
-    Specifying any stride value != 1 is incompatible with specifying
-    any `dilation_rate` value != 1.
-- __padding__: One of `"valid"` or `"same"` (case-insensitive).
-- __data_format__: A string,
-    one of `"channels_last"` (default) or `"channels_first"`.
-    It defaults to the `image_data_format` value found in your
-    Keras config file at `~/.keras/keras.json`.
-    If you never set it, then it will be `"channels_last"`.
-- __dilation_rate__: An integer or tuple/list of n integers, specifying
-    the dilation rate to use for dilated convolution.
-    Currently, specifying any `dilation_rate` value != 1 is
-    incompatible with specifying any `strides` value != 1.
-- __activation__: Activation function to use
-    (see [activations](../activations.md)).
-- __recurrent_activation__: Activation function to use
-    for the recurrent step
-    (see [activations](../activations.md)).
-- __use_bias__: Boolean, whether the layer uses a bias vector.
-- __kernel_initializer__: Initializer for the `kernel` weights matrix,
-    used for the linear transformation of the inputs.
-    (see [initializers](../initializers.md)).
-- __recurrent_initializer__: Initializer for the `recurrent_kernel`
-    weights matrix,
-    used for the linear transformation of the recurrent state.
-    (see [initializers](../initializers.md)).
-- __bias_initializer__: Initializer for the bias vector
-    (see [initializers](../initializers.md)).
-- __unit_forget_bias__: Boolean.
-    If True, add 1 to the bias of the forget gate at initialization.
-    Use in combination with `bias_initializer="zeros"`.
-    This is recommended in [Jozefowicz et al. (2015)](
-    http://www.jmlr.org/proceedings/papers/v37/jozefowicz15.pdf).
-- __kernel_regularizer__: Regularizer function applied to
-    the `kernel` weights matrix
-    (see [regularizer](../regularizers.md)).
-- __recurrent_regularizer__: Regularizer function applied to
-    the `recurrent_kernel` weights matrix
-    (see [regularizer](../regularizers.md)).
-- __bias_regularizer__: Regularizer function applied to the bias vector
-    (see [regularizer](../regularizers.md)).
-- __kernel_constraint__: Constraint function applied to
-    the `kernel` weights matrix
-    (see [constraints](../constraints.md)).
-- __recurrent_constraint__: Constraint function applied to
-    the `recurrent_kernel` weights matrix
-    (see [constraints](../constraints.md)).
-- __bias_constraint__: Constraint function applied to the bias vector
-    (see [constraints](../constraints.md)).
-- __dropout__: Float between 0 and 1.
-    Fraction of the units to drop for
-    the linear transformation of the inputs.
-- __recurrent_dropout__: Float between 0 and 1.
-    Fraction of the units to drop for
-    the linear transformation of the recurrent state.
+- __filters__: 整数，输出空间的维度
+（即卷积中滤波器的输出数量）。
+- __kernel_size__: 一个整数，或者 n 个整数表示的元组或列表，
+指明卷积窗口的维度。
+- __strides__: 一个整数，或者 n 个整数表示的元组或列表，
+指明卷积的步长。
+指定任何 stride 值 != 1 与指定 `dilation_rate` 值 != 1 两者不兼容。
+- __padding__: `"valid"` 或 `"same"` 之一 (大小写敏感)。
+- __data_format__: 字符串，
+`channels_last` (默认) 或 `channels_first` 之一。
+输入中维度的顺序。
+`channels_last` 对应输入尺寸为 `(batch, time, ..., channels)`，
+`channels_first` 对应输入尺寸为 `(batch, time, channels, ...)`。
+它默认为从 Keras 配置文件 `~/.keras/keras.json` 中
+找到的 `image_data_format` 值。
+如果你从未设置它，将使用 `"channels_last"`。
+- __dilation_rate__: 一个整数，或 n 个整数的元组/列表，指定用于膨胀卷积的膨胀率。
+目前，指定任何 `dilation_rate` 值 != 1 与指定 stride 值 != 1 两者不兼容。
+- __activation__: 要使用的激活函数
+(详见 [activations](../activations.md))。
+如果传入 None，则不使用激活函数
+(即 线性激活：`a(x) = x`)。
+- __recurrent_activation__: 用于循环时间步的激活函数
+(详见 [activations](../activations.md))。
+- __use_bias__: 布尔值，该层是否使用偏置向量。
+- __kernel_initializer__: `kernel` 权值矩阵的初始化器，
+用于输入的线性转换
+(详见 [initializers](../initializers.md))。
+- __recurrent_initializer__: `recurrent_kernel` 权值矩阵
+的初始化器，用于循环层状态的线性转换
+(详见 [initializers](../initializers.md))。
+- __bias_initializer__:偏置向量的初始化器
+(详见[initializers](../initializers.md)).
+- __unit_forget_bias__: 布尔值。
+如果为 True，初始化时，将忘记门的偏置加 1。
+将其设置为 True 同时还会强制 `bias_initializer="zeros"`。
+这个建议来自 [Jozefowicz et al. (2015)](http://www.jmlr.org/proceedings/papers/v37/jozefowicz15.pdf)。
+- __kernel_regularizer__: 运用到 `kernel` 权值矩阵的正则化函数
+(详见 [regularizer](../regularizers.md))。
+- __recurrent_regularizer__: 运用到 `recurrent_kernel` 权值矩阵的正则化函数
+(详见 [regularizer](../regularizers.md))。
+- __bias_regularizer__: 运用到偏置向量的正则化函数
+(详见 [regularizer](../regularizers.md))。
+- __kernel_constraint__: 运用到 `kernel` 权值矩阵的约束函数
+(详见 [constraints](../constraints.md))。
+- __recurrent_constraint__: 运用到 `recurrent_kernel` 权值矩阵的约束函数
+(详见 [constraints](../constraints.md))。
+- __bias_constraint__: 运用到偏置向量的约束函数
+(详见 [constraints](../constraints.md))。
+- __dropout__: 在 0 和 1 之间的浮点数。
+单元的丢弃比例，用于输入的线性转换。
+- __recurrent_dropout__: 在 0 和 1 之间的浮点数。
+单元的丢弃比例，用于循环层状态的线性转换。
     
 ----
 

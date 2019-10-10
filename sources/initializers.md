@@ -11,7 +11,7 @@ model.add(Dense(64,
                 bias_initializer='zeros'))
 ```
 
-## 可用的初始化器
+## 预定义初始化器
 
 下面这些是可用的内置初始化器，是 `keras.initializers` 模块的一部分: 
 

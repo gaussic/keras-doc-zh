@@ -23,7 +23,7 @@
 
 ## 请求新功能
 
-你也可以使用 [Tensorflow Github issues](https://github.com/tensorflow/tensorflow/issues) 来请求你希望在 Keras 中看到的功能，或者在 Keras API 中的更改。
+你也可以使用 [TensorFlow Github issues](https://github.com/tensorflow/tensorflow/issues) 来请求你希望在 Keras 中看到的功能，或者在 Keras API 中的更改。
 
 1. 提供你想要的功能的清晰和详细的解释，以及为什么添加它很重要。请记住，我们需要的功能是对于大多数用户而言的，不仅仅是一小部分人。如果你只是针对少数用户，请考虑为 Keras 编写附加库。对 Keras 来说，避免臃肿的 API 和代码库是至关重要的。
 
@@ -36,7 +36,7 @@
 
 ## 请求贡献代码
 
-在[这个板块](https://github.com/keras-team/keras/projects/1) 我们会列出当前需要添加的出色的问题和新功能。如果你想要为 Keras 做贡献，这就是可以开始的地方。
+在[这个板块](https://github.com/keras-team/keras/projects/1)我们会列出当前需要添加的出色的问题和新功能。如果你想要为 Keras 做贡献，这就是可以开始的地方。
 
 
 ---
@@ -63,7 +63,7 @@
       - 将共享设置为 「每个有链接的人都可以发表评论」。
       - 将文档发给 `keras-users@googlegroups.com`，主题从 `[API DESIGN REVIEW]` (全大写) 开始，这样我们才会注意到它。
       - 等待评论，回复评论。必要时修改提案。
-      - 该提案最终将被批准或拒绝。一旦获得批准，您可以发出合并请求或要求他人撰写合并请求。
+      - 该提案最终将被批准或拒绝。一旦获得批准，您可以发出合并请求或要求他人撰写合并请求。
 
 
 2. 撰写代码（或者让别人写）。这是最难的一部分。

@@ -10,7 +10,7 @@ keras.layers.LocallyConnected1D(filters, kernel_size, strides=1, padding='valid'
 `LocallyConnected1D` 层与 `Conv1D` 层的工作方式相同，除了权值不共享外，
 也就是说，在输入的每个不同部分应用不同的一组过滤器。
 
-__例子__
+__示例__
 
 ```python
 # 将长度为 3 的非共享权重 1D 卷积应用于
@@ -78,7 +78,7 @@ keras.layers.LocallyConnected2D(filters, kernel_size, strides=(1, 1), padding='v
 `LocallyConnected2D` 层与 `Conv2D` 层的工作方式相同，除了权值不共享外，
 也就是说，在输入的每个不同部分应用不同的一组过滤器。
 
-__例子__
+__示例__
 
 ```python
 # 在 32x32 图像上应用 3x3 非共享权值和64个输出过滤器的卷积

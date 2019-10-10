@@ -7,16 +7,15 @@ keras.layers.Dense(units, activation=None, use_bias=True, kernel_initializer='gl
 
 就是你常用的的全连接层。
 
-`Dense` 实现以下操作：
-`output = activation(dot(input, kernel) + bias)`
+`Dense` 实现以下操作：`output = activation(dot(input, kernel) + bias)`
 其中 `activation` 是按逐个元素计算的激活函数，`kernel`
 是由网络层创建的权值矩阵，以及 `bias` 是其创建的偏置向量
 (只在 `use_bias` 为 `True` 时才有用)。
 
-- __注意__: 如果该层的输入的秩大于2，那么它首先被展平然后
+- __注意__: 如果该层的输入的秩大于 2，那么它首先被展平然后
 再计算与 `kernel` 的点乘。
 
-__例__
+__示例__
 
 
 ```python
@@ -36,12 +35,12 @@ __参数__
 - __activation__: 激活函数
 (详见 [activations](../activations.md))。
 若不指定，则不使用激活函数
-(即，「线性」激活: `a(x) = x`)。
+(即，线性激活: `a(x) = x`)。
 - __use_bias__: 布尔值，该层是否使用偏置向量。
 - __kernel_initializer__: `kernel` 权值矩阵的初始化器
 (详见 [initializers](../initializers.md))。
 - __bias_initializer__: 偏置向量的初始化器
-(see [initializers](../initializers.md)).
+(详见 [initializers](../initializers.md))。
 - __kernel_regularizer__: 运用到 `kernel` 权值矩阵的正则化函数
 (详见 [regularizer](../regularizers.md))。
 - __bias_regularizer__: 运用到偏置向的的正则化函数
@@ -140,7 +139,7 @@ __参数__
 
 - __data_format__：一个字符串，其值为 `channels_last`（默认值）或者 `channels_first`。它表明输入的维度的顺序。此参数的目的是当模型从一种数据格式切换到另一种数据格式时保留权重顺序。`channels_last` 对应着尺寸为 `(batch, ..., channels)` 的输入，而 `channels_first` 对应着尺寸为 `(batch, channels, ...)` 的输入。默认为 `image_data_format` 的值，你可以在 Keras 的配置文件 `~/.keras/keras.json` 中找到它。如果你从未设置过它，那么它将是 `channels_last`
 
-__例__
+__示例__
 
 
 ```python
@@ -173,6 +172,7 @@ Keras 张量是底层后端(Theano, TensorFlow 或 CNTK)
 `model = Model(input=[a, b], output=c)`
 
 添加的 Keras 属性是：
+
 - __`_keras_shape`__: 通过 Keras端的尺寸推理
 进行传播的整数尺寸元组。
 - __`_keras_history`__: 应用于张量的最后一层。
@@ -198,7 +198,7 @@ __返回__
 
 一个张量。
 
-__例__
+__示例__
 
 
 ```python
@@ -235,7 +235,7 @@ __输出尺寸__
 
 `(batch_size,) + target_shape`
 
-__例__
+__示例__
 
 
 ```python
@@ -256,7 +256,7 @@ model.add(Reshape((-1, 2, 2)))
 
 ----
 
-<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L409)</span>
+<span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L410)</span>
 ### Permute
 
 ```python
@@ -267,7 +267,7 @@ keras.layers.Permute(dims)
 
 在某些场景下很有用，例如将 RNN 和 CNN 连接在一起。
 
-__例__
+__示例__
 
 
 ```python
@@ -304,7 +304,7 @@ keras.layers.RepeatVector(n)
 
 将输入重复 n 次。
 
-__例__
+__示例__
 
 
 ```python
@@ -340,7 +340,7 @@ keras.layers.Lambda(function, output_shape=None, mask=None, arguments=None)
 
 将任意表达式封装为 `Layer` 对象。
 
-__例__
+__示例__
 
 
 ```python
@@ -459,7 +459,7 @@ keras.layers.Masking(mask_value=0.0)
 
 如果任何下游层不支持覆盖但仍然收到此类输入覆盖信息，会引发异常。
 
-__例__
+__示例__
 
 
 考虑将要喂入一个 LSTM 层的 Numpy 矩阵 `x`，
@@ -525,11 +525,11 @@ Dropout 的 Spatial 2D 版本
 __参数__
 
 - __rate__: 0 到 1 之间的浮点数。需要丢弃的输入比例。
-- __data_format__：`channels_first` 或者 `channels_last`。在 `channels_first`  模式中，通道维度（即深度）位于索引 1，在 `channels_last` 模式中，通道维度位于索引 3。默认为 `image_data_format` 的值，你可以在 Keras 的配置文件 `~/.keras/keras.json` 中找到它。如果你从未设置过它，那么它将是 `channels_last`
+- __data_format__：`channels_first` 或者 `channels_last`。在 `channels_first`  模式中，通道维度（即深度）位于索引 1，在 `channels_last` 模式中，通道维度位于索引 3。默认为 `image_data_format` 的值，你可以在 Keras 的配置文件 `~/.keras/keras.json` 中找到它。如果你从未设置过它，那么它将是 `channels_last`。
 
 __输入尺寸__
 
-4D 张量，如果 data_format＝`channels_first`，尺寸为 `(samples, channels, rows, cols)`，如果 data_format＝`channels_last`，尺寸为 `(samples, rows, cols, channels)`
+4D 张量，如果 data_format＝`channels_first`，尺寸为 `(samples, channels, rows, cols)`，如果 data_format＝`channels_last`，尺寸为 `(samples, rows, cols, channels)`。
 
 __输出尺寸__
 
@@ -555,11 +555,11 @@ Dropout 的 Spatial 3D 版本
 __参数__
 
 - __rate__: 0 到 1 之间的浮点数。需要丢弃的输入比例。
-- __data_format__：`channels_first` 或者 `channels_last`。在 `channels_first`  模式中，通道维度（即深度）位于索引 1，在 `channels_last` 模式中，通道维度位于索引 4。默认为 `image_data_format` 的值，你可以在 Keras 的配置文件 `~/.keras/keras.json` 中找到它。如果你从未设置过它，那么它将是 `channels_last`
+- __data_format__：`channels_first` 或者 `channels_last`。在 `channels_first`  模式中，通道维度（即深度）位于索引 1，在 `channels_last` 模式中，通道维度位于索引 4。默认为 `image_data_format` 的值，你可以在 Keras 的配置文件 `~/.keras/keras.json` 中找到它。如果你从未设置过它，那么它将是 `channels_last`。
 
 __输入尺寸__
 
-5D 张量，如果 data_format＝`channels_first`，尺寸为 `(samples, channels, dim1, dim2, dim3)`，如果 data_format＝`channels_last`，尺寸为 `(samples, dim1, dim2, dim3, channels)`
+5D 张量，如果 data_format＝`channels_first`，尺寸为 `(samples, channels, dim1, dim2, dim3)`，如果 data_format＝`channels_last`，尺寸为 `(samples, dim1, dim2, dim3, channels)`。
 
 __输出尺寸__
 

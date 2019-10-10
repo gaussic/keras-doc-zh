@@ -20,7 +20,7 @@ Keras 的应用模块（keras.applications）提供了带有预训练权值的�
 - [NASNet](#nasnet)
 
 
-所有的这些架构都兼容所有的后端 (TensorFlow, Theano 和 CNTK)，并且会在实例化时，根据 Keras 配置文件`〜/.keras/keras.json` 中设置的图像数据格式构建模型。举个例子，如果你设置 `image_data_format=channels_last`，则加载的模型将按照 TensorFlow 的维度顺序来构造，即「高度-宽度-深度」（Height-Width-Depth）的顺序。
+所有的这些架构都兼容所有的后端 (TensorFlow, Theano 和 CNTK)，并且会在实例化时，根据 Keras 配置文件`〜/.keras/keras.json` 中设置的图像数据格式构建模型。举个例子，如果你设置 `image_data_format=channels_last`，则加载的模型将按照 TensorFlow 的维度顺序来构造，即「高度-宽度-深度」(Height-Width-Depth) 的顺序。
 
 注意：
 
@@ -215,7 +215,7 @@ keras.applications.xception.Xception(include_top=True, weights='imagenet', input
 
 模型默认输入尺寸是 299x299。
 
-### 参数
+__参数__
 
 - __include_top__: 是否包括顶层的全连接层。
 - __weights__: `None` 代表随机初始化， `'imagenet'` 代表加载在 ImageNet 上预训练的权值。
@@ -227,15 +227,15 @@ keras.applications.xception.Xception(include_top=True, weights='imagenet', input
     - `'max'` 代表全局最大池化。
 - __classes__: 可选，图片分类的类别数，仅当 `include_top` 为 `True` 并且不加载预训练权值时可用。
 
-### 返回值
+__返回__
 
-一个 Keras `Model` 对象.
+一个 Keras `Model` 对象。
 
-### 参考文献
+__参考文献__
 
 - [Xception: Deep Learning with Depthwise Separable Convolutions](https://arxiv.org/abs/1610.02357)
 
-### License
+__License__
 
 预训练权值由我们自己训练而来，基于 MIT license 发布。
 
@@ -255,7 +255,7 @@ VGG16 模型，权值由 ImageNet 训练而来。
 
 模型默认输入尺寸是 224x224。
 
-### 参数
+__参数__
 
 - __include_top__: 是否包括顶层的全连接层。
 - __weights__: `None` 代表随机初始化， `'imagenet'` 代表加载在 ImageNet 上预训练的权值。
@@ -267,15 +267,15 @@ VGG16 模型，权值由 ImageNet 训练而来。
     - `'max'` 代表全局最大池化。
 - __classes__: 可选，图片分类的类别数，仅当 `include_top` 为 `True` 并且不加载预训练权值时可用。
 
-### 返回值
+__返回__
 
 一个 Keras `Model` 对象。
 
-### 参考文献
+__参考文献__
 
 - [Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/abs/1409.1556)：如果在研究中使用了VGG，请引用该论文。
 
-### License
+__License__
 
 预训练权值由 [VGG at Oxford](http://www.robots.ox.ac.uk/~vgg/research/very_deep/) 发布的预训练权值移植而来，基于 [Creative Commons Attribution License](https://creativecommons.org/licenses/by/4.0/)。
 
@@ -294,7 +294,7 @@ VGG19 模型，权值由 ImageNet 训练而来。
 
 模型默认输入尺寸是 224x224。
 
-### 参数
+__参数__
 
 - __include_top__: 是否包括顶层的全连接层。
 - __weights__: `None` 代表随机初始化， `'imagenet'` 代表加载在 ImageNet 上预训练的权值。
@@ -306,15 +306,15 @@ VGG19 模型，权值由 ImageNet 训练而来。
     - `'max'` 代表全局最大池化
 - __classes__: 可选，图片分类的类别数，仅当 `include_top` 为 `True` 并且不加载预训练权值时可用。
 
-### 返回值
+__返回__
 
 一个 Keras `Model` 对象。
 
-### 参考文献
+__参考文献__
 
 - [Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/abs/1409.1556)：如果在研究中使用了VGG，请引用该论文。
 
-### License
+__License__
 
 预训练权值由 [VGG at Oxford](http://www.robots.ox.ac.uk/~vgg/research/very_deep/) 发布的预训练权值移植而来，基于 [Creative Commons Attribution License](https://creativecommons.org/licenses/by/4.0/)。
 
@@ -338,7 +338,7 @@ ResNet, ResNetV2 模型，权值由 ImageNet 训练而来。
 
 模型默认输入尺寸是 224x224。
 
-### 参数
+__参数__
 
 - __include_top__: 是否包括顶层的全连接层。
 - __weights__: `None` 代表随机初始化， `'imagenet'` 代表加载在 ImageNet 上预训练的权值。
@@ -350,16 +350,16 @@ ResNet, ResNetV2 模型，权值由 ImageNet 训练而来。
     - `'max'` 代表全局最大池化
 - __classes__: 可选，图片分类的类别数，仅当 `include_top` 为 `True` 并且不加载预训练权值时可用。
 
-### 返回值
+__返回__
 
 一个 Keras `Model` 对象。
 
-### 参考文献
+__参考文献__
 
 - `ResNet`: [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
 - `ResNetV2`: [Identity Mappings in Deep Residual Networks](https://arxiv.org/abs/1603.05027)
 
-### License
+__License__
 
 预训练权值由以下提供：
 
@@ -381,7 +381,7 @@ Inception V3 模型，权值由 ImageNet 训练而来。
 
 模型默认输入尺寸是 299x299。
 
-### 参数
+__参数__
 
 - __include_top__: 是否包括顶层的全连接层。
 - __weights__: `None` 代表随机初始化， `'imagenet'` 代表加载在 ImageNet 上预训练的权值。
@@ -393,15 +393,15 @@ Inception V3 模型，权值由 ImageNet 训练而来。
     - `'max'` 代表全局最大池化。
 - __classes__: 可选，图片分类的类别数，仅当 `include_top` 为 `True` 并且不加载预训练权值时可用。
 
-### 返回值
+__返回__
 
 一个 Keras `Model` 对象。
 
-### 参考文献		
+__参考文献__		
 
 - [Rethinking the Inception Architecture for Computer Vision](http://arxiv.org/abs/1512.00567)
 
-### License
+__License__
 
 预训练权值基于 [Apache License](https://github.com/tensorflow/models/blob/master/LICENSE)。
 
@@ -420,7 +420,7 @@ Inception-ResNet V2 模型，权值由 ImageNet 训练而来。
 
 模型默认输入尺寸是 299x299。
 
-### 参数
+__参数__
 
 - __include_top__: 是否包括顶层的全连接层。
 - __weights__: `None` 代表随机初始化， `'imagenet'` 代表加载在 ImageNet 上预训练的权值。
@@ -432,15 +432,15 @@ Inception-ResNet V2 模型，权值由 ImageNet 训练而来。
     - `'max'` 代表全局最大池化
 - __classes__: 可选，图片分类的类别数，仅当 `include_top` 为 `True` 并且不加载预训练权值时可用。
 
-### 返回值
+__返回__
 
 一个 Keras `Model` 对象。
 
-### 参考文献
+__参考文献__
 
 - [Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning](https://arxiv.org/abs/1602.07261)
 
-### License
+__License__
 
 预训练权值基于 [Apache License](https://github.com/tensorflow/models/blob/master/LICENSE)。
 
@@ -459,7 +459,7 @@ keras.applications.mobilenet.MobileNet(input_shape=None, alpha=1.0, depth_multip
 
 模型默认输入尺寸是 224x224。
 
-### 参数
+__参数__
 
 - __input_shape__: 可选，输入尺寸元组，仅当 `include_top=False` 时有效，否则输入形状必须是 `(224, 224, 3)`（`channels_last` 格式）或 `(3, 224, 224)`（`channels_first` 格式）。它必须为 3 个输入通道，且宽高必须不小于 32，比如 `(200, 200, 3)` 是一个合法的输入尺寸。
 - __alpha__: 控制网络的宽度：
@@ -481,11 +481,11 @@ keras.applications.mobilenet.MobileNet(input_shape=None, alpha=1.0, depth_multip
 
 一个 Keras `Model` 对象。
 
-### 参考文献
+__参考文献__
 
 - [MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications](https://arxiv.org/pdf/1704.04861.pdf)
 
-### License
+__License__
 
 预训练权值基于 [Apache License](https://github.com/tensorflow/models/blob/master/LICENSE)。
 
@@ -506,7 +506,7 @@ keras.applications.densenet.DenseNet201(include_top=True, weights='imagenet', in
 
 模型默认输入尺寸是 224x224。
 
-### 参数
+__参数__
 
 - __blocks__: 四个 Dense Layers 的 block 数量。
 - __include_top__: 是否包括顶层的全连接层。
@@ -523,7 +523,7 @@ keras.applications.densenet.DenseNet201(include_top=True, weights='imagenet', in
 
 一个 Keras `Model` 对象。
 
-### 参考文献
+__参考文献__
 
 - [Densely Connected Convolutional Networks](https://arxiv.org/abs/1608.06993) (CVPR 2017 Best Paper Award)
 
@@ -545,7 +545,7 @@ keras.applications.nasnet.NASNetMobile(input_shape=None, include_top=True, weigh
 
 NASNetLarge 模型默认的输入尺寸是 331x331，NASNetMobile 模型默认的输入尺寸是 224x224。
 
-### 参数
+__参数__
 
 - __input_shape__: 可选，输入尺寸元组，仅当 `include_top=False` 时有效，否则对于 NASNetMobile 模型来说，输入形状必须是 `(224, 224, 3)`（`channels_last` 格式）或 `(3, 224, 224)`（`channels_first` 格式），对于 NASNetLarge 来说，输入形状必须是 `(331, 331, 3)` （`channels_last` 格式）或 `(3, 331, 331)`（`channels_first` 格式）。它必须为 3 个输入通道，且宽高必须不小于 32，比如 `(200, 200, 3)` 是一个合法的输入尺寸。
 - __include_top__: 是否包括顶层的全连接层。
@@ -561,11 +561,11 @@ NASNetLarge 模型默认的输入尺寸是 331x331，NASNetMobile 模型默认�
 
 一个 Keras `Model` 实例。
 
-### 参考文献
+__参考文献__
 
 - [Learning Transferable Architectures for Scalable Image Recognition](https://arxiv.org/abs/1707.07012)
 
-### License
+__License__
 
 预训练权值基于 [Apache License](https://github.com/tensorflow/models/blob/master/LICENSE)。
 
@@ -583,7 +583,7 @@ keras.applications.mobilenet_v2.MobileNetV2(input_shape=None, alpha=1.0, include
 
 模型默认输出尺寸为 224x224。
 
-### 参数
+__参数__
 
 - __input_shape__: 可选尺寸元组，以确认你是否想使用一个输入图像像素不为 (224, 224, 3) 的模型。输入形状必须是 `(224, 224, 3)`。你也可以忽略这个选项，如果你像从 input_tensor来推断 input_shape。如果你选择同时包含 input_tensor 和 input_shape，那么如果匹配的话会使用 input_shape，如果不匹配会抛出错误。例如，`(160, 160, 3)` 是一个有效的值。
 - __alpha__: 控制网络的宽度。这在 MobileNetV2 论文中被称作宽度乘子。
@@ -608,10 +608,10 @@ keras.applications.mobilenet_v2.MobileNetV2(input_shape=None, alpha=1.0, include
 
 __ValueError__: 如果 `weights` 参数非法，或非法的输入尺寸，或者当 weights='imagenet' 时，非法的 alpha, rows。
 
-### 参考文献
+__参考文献__
 
 - [MobileNetV2: Inverted Residuals and Linear Bottlenecks](https://arxiv.org/abs/1801.04381)
 
-### License
+__License__
 
 预训练权值基于 [Apache License](https://github.com/tensorflow/models/blob/master/LICENSE).

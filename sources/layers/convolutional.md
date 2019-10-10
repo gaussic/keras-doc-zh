@@ -153,7 +153,7 @@ __输出尺寸__
 - 如果 data_format='channels_last'，
 输出 4D 张量，尺寸为 `(samples, new_rows, new_cols, filters)`。
 
-由于填充的原因， `rows` 和 `cols` 值可能已更改。
+由于填充的原因，`rows` 和 `cols` 值可能已更改。
 
 ----
 
@@ -237,7 +237,7 @@ __输出尺寸__
 - 如果 data_format='channels_last'，
 输出 3D 张量，尺寸为 `(batch, new_steps, filters)`。
 
-由于填充的原因， `new_steps` 值可能已更改。
+由于填充的原因，`new_steps` 值可能已更改。
 
 ----
 
@@ -323,7 +323,7 @@ __输出尺寸__
 - 如果 data_format='channels_last'，
 输出 4D 张量，尺寸为 `(batch, new_rows, new_cols, filters)`。
 
-由于填充的原因， `rows` 和 `cols` 值可能已更改。
+由于填充的原因，`rows` 和 `cols` 值可能已更改。
 
 ----
 
@@ -395,7 +395,7 @@ __输出尺寸__
 - 如果 data_format='channels_last'，
 输出 4D 张量，尺寸为 `(batch, new_rows, new_cols,  channels * depth_multiplier)`。
 
-由于填充的原因， `rows` 和 `cols` 值可能已更改。
+由于填充的原因，`rows` 和 `cols` 值可能已更改。
 
 ----
 
@@ -482,7 +482,7 @@ __输出尺寸__
 - 如果 data_format='channels_last'，
 输出 4D 张量，尺寸为 `(batch, new_rows, new_cols, filters)`。
 
-由于填充的原因， `rows` 和 `cols` 值可能已更改。
+由于填充的原因，`rows` 和 `cols` 值可能已更改。
 
 如果指定了 `output_padding`:
 
@@ -582,7 +582,7 @@ __输出尺寸__
 - 如果 data_format='channels_last'，
 输出 5D 张量，尺寸为 `(samples, new_conv_dim1, new_conv_dim2, new_conv_dim3, filters)`。
 
-由于填充的原因， `new_conv_dim1`, `new_conv_dim2` 和 `new_conv_dim3` 值可能已更改。
+由于填充的原因，`new_conv_dim1`, `new_conv_dim2` 和 `new_conv_dim3` 值可能已更改。
 
 ----
 
@@ -683,10 +683,8 @@ new_cols = ((cols - 1) * strides[2] + kernel_size[2]
 
 __参考文献__
 
-- [A guide to convolution arithmetic for deep learning]
-  (https://arxiv.org/abs/1603.07285v1)
-- [Deconvolutional Networks]
-  (https://www.matthewzeiler.com/mattzeiler/deconvolutionalnetworks.pdf)
+- [A guide to convolution arithmetic for deep learning](https://arxiv.org/abs/1603.07285v1)
+- [Deconvolutional Networks](https://www.matthewzeiler.com/mattzeiler/deconvolutionalnetworks.pdf)
 
 ----
 
@@ -758,7 +756,7 @@ __输出尺寸__
 输出 4D 张量，尺寸为 `(batch, channels, rows, cols)`。
 
 
-由于填充的原因， `rows` 和 `cols` 值可能已更改。
+由于填充的原因，`rows` 和 `cols` 值可能已更改。
 
 __输入尺寸__
 
@@ -774,7 +772,7 @@ __输出尺寸__
 - 如果 `data_format` 为 `"channels_first"`，
 输出 4D 张量，尺寸为 `(batch, channels, cropped_rows, cropped_cols)`。
 
-__例子__
+__示例__
 
 
 ```python

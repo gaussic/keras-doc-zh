@@ -12,7 +12,7 @@ keras.utils.CustomObjectScope()
 在`with`语句结束时，
 全局自定义对象将恢复到 `with` 语句开始时的状态。
 
-__例子__
+__示例__
 
 
 考虑自定义对象 `MyObject` (例如一个类)：
@@ -34,7 +34,7 @@ keras.utils.HDF5Matrix(datapath, dataset, start=0, end=None, normalizer=None)
 
 使用 HDF5 数据集表示，而不是 Numpy 数组。
 
-__例子__
+__示例__
 
 
 ```python
@@ -79,7 +79,7 @@ __注意__
 
 `Sequence` 是进行多进程处理的更安全的方法。这种结构保证网络在每个时期每个样本只训练一次，这与生成器不同。
 
-__例子__
+__示例__
 
 
 ```python
@@ -129,7 +129,7 @@ __参数__
 - __num_classes__: 总类别数。
 - __dtype__: 字符串，输入所期望的数据类型 (`float32`, `float64`, `int32`...)
 
-__例子__
+__示例__
 
 ```python
 # 考虑一组 3 个类 {0,1,2} 中的 5 个标签数组：
@@ -316,7 +316,7 @@ __返回__
 
 一个 Keras `Model` 实例，它可以像初始 `model` 参数一样使用，但它将工作负载分布在多个 GPU 上。
 
-__例子__
+__示例__
 
 例 1 - 训练在 CPU 上合并权重的模型
 

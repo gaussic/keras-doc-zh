@@ -71,7 +71,7 @@ __异常__
 
 - __ValueError__: 如果参数 `merge_mode` 非法。
 
-__例__
+__示例__
 
 
 ```python

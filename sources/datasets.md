@@ -198,6 +198,5 @@ from keras.datasets import boston_housing
     - __seed__: 在计算测试分割之前对数据进行混洗的随机种子。
     - __test_split__: 需要保留作为测试数据的比例。
 
-- __返回：__
-  Numpy 数组的元组: `(x_train, y_train), (x_test, y_test)`。
+- __返回：__ Numpy 数组的元组: `(x_train, y_train), (x_test, y_test)`。
     

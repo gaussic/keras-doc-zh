@@ -81,16 +81,16 @@ __参数__
     验证数据是混洗之前 `x` 和`y` 数据的最后一部分样本中。
     这个参数在 `x` 是生成器或 `Sequence` 实例时不支持。
 - __validation_data__: 用于在每个轮次结束后评估损失和任意指标的数据。
-    模型不会在这个数据上训练。
-    `validation_data` 会覆盖 `validation_split`。
+    模型不会在这个数据上训练。`validation_data` 会覆盖 `validation_split`。
     `validation_data` 可以是：
-        - 元组 `(x_val, y_val)` 或 Numpy 数组或张量
-        - 元组 `(x_val, y_val, val_sample_weights)` 或 Numpy 数组。
-        - 数据集或数据集迭代器。
+      - 元组 `(x_val, y_val)` 或 Numpy 数组或张量
+      - 元组 `(x_val, y_val, val_sample_weights)` 或 Numpy 数组。
+      - 数据集或数据集迭代器。
 
     对于前两种情况，必须提供 `batch_size`。
     对于最后一种情况，必须提供 `validation_steps`。
-- __shuffle__: 布尔值（是否在每轮迭代之前混洗数据）或者 字符串 (`batch`)。
+
+- __shuffle__: 布尔值（是否在每轮迭代之前混洗数据）或者字符串 (`batch`)。
     `batch` 是处理 HDF5 数据限制的特殊选项，它对一个 batch 内部的数据进行混洗。
     当 `steps_per_epoch` 非 `None` 时，这个参数无效。
 - __class_weight__: 可选的字典，用来映射类索引（整数）到权重（浮点）值，用于加权损失函数（仅在训练期间）。
@@ -208,7 +208,7 @@ __参数__
     如果你的数据是符号张量、生成器或 `Sequence` 实例形式，不要指定 `batch_size`，
     因为它们会生成批次。
 - __verbose__: 日志显示模式，0 或 1。
-- __steps__: 声明预测结束之前的总步数（批次样本）。默认值 `None`时被忽略。
+- __steps__: 声明预测结束之前的总步数（批次样本）。默认值 `None` 时被忽略。
 - __callbacks__: 一系列的 `keras.callbacks.Callback` 实例。一系列可以在预测时使用的回调函数。
     详见 [callbacks](/callbacks)。
 - __max_queue_size__: 整数。仅用于生成器或 `keras.utils.Sequence` 输入。
@@ -329,8 +329,8 @@ __参数__
     以在使用多进程时避免数据的重复。
     生成器的输出应该为以下之一：
 
-    - 一个 `(inputs, targets)` 元组
-    - 一个 `(inputs, targets, sample_weights)` 元组。
+    - `(inputs, targets)` 元组
+    - `(inputs, targets, sample_weights)` 元组。
 
     这个元组（生成器的单个输出）组成了单个的 batch。
     因此，这个元组中的所有数组长度必须相同（与这一个 batch 的大小相等）。
@@ -387,7 +387,7 @@ __异常__
 
 - __ValueError__: 如果生成器生成的数据格式不正确。
 
-__例子__
+__示例__
 
 
 ```python

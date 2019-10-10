@@ -14,7 +14,7 @@ from keras.constraints import max_norm
 model.add(Dense(64, kernel_constraint=max_norm(2.)))
 ```
 
-## 可用的约束
+## 预定义的约束
 
 
 <span style="float:right;">[[source]](https://github.com/keras-team/keras/blob/master/keras/constraints.py#L22)</span>
