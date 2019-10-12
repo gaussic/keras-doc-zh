@@ -41,7 +41,7 @@ class Antirectifier(layers.Layer):
 
     def compute_output_shape(self, input_shape):
         shape = list(input_shape)
-        assert len(shape) == 2  # only valid for 2D tensors
+        assert len(shape) == 2  # 仅对 2D 张量有效
         shape[-1] *= 2
         return tuple(shape)
 
@@ -57,7 +57,7 @@ batch_size = 128
 num_classes = 10
 epochs = 40
 
-# the data, split between train and test sets
+# 切分为训练和测试的数据
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
 x_train = x_train.reshape(60000, 784)
