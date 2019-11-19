@@ -38,7 +38,7 @@ keras.losses.mean_squared_error(y_true, y_pred)
 
 
 ```python
-eras.losses.mean_absolute_error(y_true, y_pred)
+keras.losses.mean_absolute_error(y_true, y_pred)
 ```
 
 ----
